@@ -1,0 +1,14 @@
+make build
+az login
+make build-containers
+make infrastructure
+
+make extract -env
+make deploy-sql-database
+
+sudo chmod 666 /var/run/docker.sock
+
+make deploy-synapse-packages
+make deploy-synapse-artifacts
+make deploy-search-indexes
+
